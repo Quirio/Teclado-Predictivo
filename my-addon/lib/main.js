@@ -3,7 +3,7 @@ require("sdk/tabs").on("ready", runScript);
  
 function runScript(tab) {
   tab.attach({
-    contentScriptFile: self.data.url("my-script.js")
+    contentScriptFile: [self.data.url("jquery-1.11.2.min.js"),self.data.url("my-script.js")]
   });
 }
 
