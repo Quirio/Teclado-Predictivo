@@ -33,6 +33,7 @@ function Analizador(){
             //alert(PalabraActual);
             // alert(PalabraActual);
             Consulta(PalabraActual);
+            Insercion(PalabraAnterior,PalabraActual);
            
         }
     }
@@ -48,16 +49,25 @@ function Consulta(PalabraAnterior){
         type: 'POST',
         dataType: 'json',
         success: function(datos){
-            //alert(datos[0].PalabraSiguiente);
             document.activeElement.value += datos[0].PalabraSiguiente;
         }
     });
 }
 
+
+
 function Insercion(PalabraAnterior,PalabraSiguiente){
-
+     var Datos = {PAnterior: PalabraAnterior,
+                 PSiguiente: PalabraSiguiente};
+      
+     $.ajax({
+        url: 'http://192.168.1.101:80/Teclado/Insercion-PHP.php',
+        data: Datos,
+        type: 'POST',
+        dataType: 'json',
+        success: function(datos){
+            alert("HEcho");
+        }
+    });
 }
 
-function Update(PalabraAnterior,PalabraSiguiente){
-
-}
