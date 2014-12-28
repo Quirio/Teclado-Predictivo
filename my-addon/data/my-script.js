@@ -30,27 +30,28 @@ function Analizador(){
         else{
             PalabraActual = Separado[Separado.length-2];
             PalabraAnterior = Separado[Separado.length-3];
-            alert(PalabraActual);
+            //alert(PalabraActual);
+            // alert(PalabraActual);
+            Consulta(PalabraActual);
+           
         }
     }
 }
 
 
-function Consulta(PalabraAnterior,PalabraSiguiente){
-    var Datos = [PalabraAnterior,PalabraSiguiente];
-    
-  /*  $.ajax({
-        url: 'Productos-ajax.php',
+function Consulta(PalabraAnterior){
+    var Datos = {PAnterior: PalabraAnterior};
+
+    $.ajax({
+        url: 'http://192.168.1.101:80/Teclado/Consulta-PHP.php',
         data: Datos,
         type: 'POST',
         dataType: 'json',
         success: function(datos){
-            for (var i = 0; i < datos.length; i++)
-                $('#respuesta').append('<b>Id:</b> '+datos[i].Id+' <b>Nombre:</b> '+datos[i].Nombre+' <b>Descripcion:</b> '+datos[i].Descripcion+
-                                       ' <b>Precio:</b> '+datos[i].Precio+' <b>Stock:</b> '+datos[i].Stock+'<br>');
-            $('#respuesta').append('<br><i><b>'+datos.length+'</b> resultados</i>');
+            //alert(datos[0].PalabraSiguiente);
+            document.activeElement.value += datos[0].PalabraSiguiente;
         }
-    });*/
+    });
 }
 
 function Insercion(PalabraAnterior,PalabraSiguiente){
