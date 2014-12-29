@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-12-2014 a las 20:52:24
+-- Tiempo de generación: 29-12-2014 a las 19:42:34
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -38,7 +38,17 @@ CREATE TABLE IF NOT EXISTS `palabras` (
 --
 
 INSERT INTO `palabras` (`PalabraAnterior`, `PalabraSiguiente`, `Coincidencia`, `Tiempo`) VALUES
-('hola', 'Suso', 20, '0000-00-00 00:00:00');
+('a', 'hola', 1, '2014-12-29 18:40:11'),
+('antonio', 'benavente', 1, '2014-12-29 18:40:21'),
+('antonio', 'jooapeoa', 1, '2014-12-29 16:14:30'),
+('como', 'estás', 1, '2014-12-29 15:11:42'),
+('hola', 'antonio', 20, '2014-12-29 18:40:15'),
+('hola', 'hola', 5, '2014-12-29 16:21:19'),
+('hola', 'pollo', 3, '2014-12-29 16:04:42'),
+('hola', 'Suso', 5, '2014-12-29 16:02:11'),
+('me', 'voy', 1, '2014-12-29 18:40:05'),
+('que', 'tal?', 1, '2014-12-29 15:11:42'),
+('voy', 'a', 1, '2014-12-29 18:40:10');
 
 --
 -- Índices para tablas volcadas
