@@ -1,13 +1,21 @@
 var inputs = $("input");
 var textarea = $("textarea");
+var Prestab = false;
 
 for(var i=0; i<inputs.length; i++){
-    if (inputs[i].type == "text")
-        inputs[i].onkeyup = Analizador;  
+    if (inputs[i].type == "text"){
+        inputs[i].onkeyup = function(e){
+            if(e.keyCode == 32)
+                Analizador();
+        }
+    }
 }
 
 for(var i=0; i<textarea.length; i++){
-    textarea[i].onkeyup = Analizador;  
+    textarea[i].onkeyup = function(e){
+        if(e.keyCode == 32)
+            Analizador();
+    }
 }
 
 
@@ -30,11 +38,7 @@ function Analizador(){
         else{
             PalabraActual = Separado[Separado.length-2];
             PalabraAnterior = Separado[Separado.length-3];
-            //alert(PalabraActual);
-            // alert(PalabraActual);
             Consulta(PalabraActual);
-            Insercion(PalabraAnterior,PalabraActual);
-           
         }
     }
 }
@@ -42,6 +46,7 @@ function Analizador(){
 
 function Consulta(PalabraAnterior){
     var Datos = {PAnterior: PalabraAnterior};
+    var Resultado;
 
     $.ajax({
         url: 'http://192.168.1.101:80/Teclado/Consulta-PHP.php',
@@ -49,24 +54,67 @@ function Consulta(PalabraAnterior){
         type: 'POST',
         dataType: 'json',
         success: function(datos){
-            document.activeElement.value += datos[0].PalabraSiguiente;
+            Resultado = datos;
+
+            var tam = document.activeElement.value.length;
+            document.activeElement.value +=Resultado[0].PalabraSiguiente+" ";
+            moverPosicionMouse(document.activeElement,tam);
+
+            document.activeElement.onkeydown = function(e){
+                if(e.keyCode == 9){
+                    moverPosicionMouse(document.activeElement,document.activeElement.value.length);
+                    Insercion(PalabraAnterior,Resultado[0].PalabraSiguiente);
+                    Prestab = true;
+                    return false;
+                }
+                else{
+                    if(Prestab == false)
+                        document.activeElement.value = document.activeElement.value.substr(0,tam);
+                    Prestab = false;
+                    document.activeElement.onkeydown = function(e){
+                        return true;
+                    }
+                    
+
+                }
+            }
         }
     });
+
+}
+
+function moverPosicionMouse(ctrl, pos){
+    if(ctrl.setSelectionRange){
+        ctrl.focus();
+        ctrl.setSelectionRange(pos,pos);
+    }
+    else if(ctrl.createTextRange){
+        var range = ctrl.createTextRange();
+        range.collapse(true);
+        range.moveEnd('character', pos);
+        range.moveStart('character', pos);
+        range.select();
+    }
+}
+
+function Elegir(Datos){
+    if(Datos != null && Datos.length !=0)
+        document.activeElement.value += Datos[0].PalabraSiguiente;
+
 }
 
 
-
 function Insercion(PalabraAnterior,PalabraSiguiente){
-     var Datos = {PAnterior: PalabraAnterior,
+    var Datos = {PAnterior: PalabraAnterior,
                  PSiguiente: PalabraSiguiente};
-      
-     $.ajax({
+
+    $.ajax({
         url: 'http://192.168.1.101:80/Teclado/Insercion-PHP.php',
         data: Datos,
         type: 'POST',
         dataType: 'json',
         success: function(datos){
-            alert("HEcho");
+            // alert(datos[0].PalabraSiguiente);
         }
     });
 }
