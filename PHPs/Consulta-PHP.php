@@ -35,7 +35,7 @@ function getArraySQL(){
 
     $PalabraAnterior = $_POST['PAnterior'];
 
-    $sql = "SELECT * FROM palabras WHERE (PalabraAnterior = \"".  $PalabraAnterior . "\")";
+    $sql = "SELECT * FROM palabras WHERE (PalabraAnterior = \"".  $PalabraAnterior . "\") ORDER BY Coincidencia DESC,Tiempo DESC";
 
     //Creamos la conexión con la función anterior
     $conexion = connectDB();
