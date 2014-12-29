@@ -27,20 +27,21 @@ function Analizador(){
     var PalabraSiguiente;
 
 
-    if(Texto.charAt(Texto.length-1) == " "){
-        Separado = Texto.split(" ");
+    //if(Texto.charAt(Texto.length-1) == " "){
+    Separado = Texto.split(" ");
 
-        if(Separado[Separado.length-3] == undefined){
-            PalabraActual = Separado[Separado.length-2];
-            PalabraAnterior = "$";
-        }
-
-        else{
-            PalabraActual = Separado[Separado.length-2];
-            PalabraAnterior = Separado[Separado.length-3];
-            Consulta(PalabraActual);
-        }
+    if(Separado[Separado.length-3] == undefined){
+        PalabraActual = Separado[Separado.length-2];
+        PalabraAnterior = "$";
     }
+
+    else{
+        PalabraActual = Separado[Separado.length-2];
+        PalabraAnterior = Separado[Separado.length-3];
+        Insercion(PalabraAnterior,PalabraActual);
+        Consulta(PalabraActual);
+    }
+    //   }
 }
 
 
@@ -57,13 +58,12 @@ function Consulta(PalabraAnterior){
             Resultado = datos;
 
             var tam = document.activeElement.value.length;
-            document.activeElement.value +=Resultado[0].PalabraSiguiente+" ";
+            document.activeElement.value +=Resultado[0].PalabraSiguiente;
             moverPosicionMouse(document.activeElement,tam);
 
             document.activeElement.onkeydown = function(e){
                 if(e.keyCode == 9){
                     moverPosicionMouse(document.activeElement,document.activeElement.value.length);
-                    Insercion(PalabraAnterior,Resultado[0].PalabraSiguiente);
                     Prestab = true;
                     return false;
                 }
@@ -74,7 +74,7 @@ function Consulta(PalabraAnterior){
                     document.activeElement.onkeydown = function(e){
                         return true;
                     }
-                    
+
 
                 }
             }
