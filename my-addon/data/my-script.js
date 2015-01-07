@@ -28,15 +28,17 @@ function Analizador(){
 
 
     //if(Texto.charAt(Texto.length-1) == " "){
-    var patt = /\s*/
+    var patt = /\s+/
     Separado = Texto.split(patt);
+    alert(Separado[0]);
     
     /*if(Separado.length == 0){
         PalabraActual = "$"; 
         Consulta(PalabraActual);
     }*/
+    
 
-    if(Separado[Separado.length-3] == undefined){
+   if(Separado[Separado.length-3] == undefined){
         PalabraActual = Separado[Separado.length-2];
         PalabraAnterior = "$";
         Insercion(PalabraAnterior,PalabraActual);
