@@ -28,11 +28,19 @@ function Analizador(){
 
 
     //if(Texto.charAt(Texto.length-1) == " "){
-    Separado = Texto.split(" ");
+    var patt = /\s*/
+    Separado = Texto.split(patt);
+    
+    /*if(Separado.length == 0){
+        PalabraActual = "$"; 
+        Consulta(PalabraActual);
+    }*/
 
     if(Separado[Separado.length-3] == undefined){
         PalabraActual = Separado[Separado.length-2];
         PalabraAnterior = "$";
+        Insercion(PalabraAnterior,PalabraActual);
+        Consulta(PalabraActual);
     }
 
     else{
