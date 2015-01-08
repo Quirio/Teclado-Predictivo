@@ -30,7 +30,6 @@ function Analizador(){
     //if(Texto.charAt(Texto.length-1) == " "){
     var patt = /\s+/
     Separado = Texto.split(patt);
-    alert(Separado[0]);
     
     /*if(Separado.length == 0){
         PalabraActual = "$"; 
@@ -60,7 +59,7 @@ function Consulta(PalabraAnterior){
     var Resultado;
 
     $.ajax({
-        url: 'http://192.168.1.101:80/Teclado/Consulta-PHP.php',
+        url: 'http://127.0.0.1:80/Teclado/Consulta-PHP.php',
         data: Datos,
         type: 'POST',
         dataType: 'json',
@@ -119,7 +118,7 @@ function Insercion(PalabraAnterior,PalabraSiguiente){
                  PSiguiente: PalabraSiguiente};
 
     $.ajax({
-        url: 'http://192.168.1.101:80/Teclado/Insercion-PHP.php',
+        url: 'http://127.0.0.1:80/Teclado/Insercion-PHP.php',
         data: Datos,
         type: 'POST',
         dataType: 'json',
