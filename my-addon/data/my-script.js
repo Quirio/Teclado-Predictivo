@@ -30,11 +30,7 @@ function Analizador(){
     //if(Texto.charAt(Texto.length-1) == " "){
     var patt = /\s+/
     Separado = Texto.split(patt);
-<<<<<<< HEAD
-       
-=======
-    
->>>>>>> origin/master
+
     /*if(Separado.length == 0){
         PalabraActual = "$"; 
         Consulta(PalabraActual);

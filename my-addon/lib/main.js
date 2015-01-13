@@ -1,5 +1,6 @@
 var self = require("sdk/self");
 var buttons = require('sdk/ui/button/action');
+var pestanas = require("sdk/tabs");
 
 var button = buttons.ActionButton({
 	id: "teclado-predictivo",
@@ -22,7 +23,15 @@ function botonEvent(state) {
 		"64": "./icon-inactive/icon-64.png"
 		};
 		button.activado = false;
-		// console.log("Desactivado");
+        
+		console.log("Desactivado");
+        
+         //desactivo en todas las pestañas el teclado.
+        for (let tab of pestanas)
+            desactivar(tab);
+        
+        //pongo como defecto en el ready el script.
+        pestanas.on("ready", desactivar);
 	}
 	else {	// Si el teclado está desactivado
 		button.label = "Desactivar teclado predictivo";
@@ -32,14 +41,30 @@ function botonEvent(state) {
 		"64": "./icon-active/icon-64.png"
 		};
 		button.activado = true;
-		// console.log("Activado");
+        console.log("Activado");
+        
+        //activo en todas las pestañas el teclado.
+        for (let tab of pestanas)
+            activar(tab);
+        
+        //pongo como defecto en el ready el script.
+        pestanas.on("ready", activar);
 	}
+  
 }
 
-require("sdk/tabs").on("ready", runScript);
+
+//require("sdk/tabs").on("ready", runScript);
  
-function runScript(tab) {
+function activar(tab) {
   tab.attach({
     contentScriptFile: [self.data.url("jquery-1.11.2.min.js"),self.data.url("my-script.js")]
   });
 }
+
+function desactivar(tab){
+    tab.attach({
+    contentScriptFile: [self.data.url("jquery-1.11.2.min.js"),self.data.url("Desactivar.js")]
+  });
+}
+    
