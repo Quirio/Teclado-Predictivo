@@ -8,6 +8,8 @@ for(var i=0; i<inputs.length; i++){
             if(e.keyCode == 32)
                 Analizador();
         }
+        
+        inputs[i].addEventListener("click",Analizador());
     }
 }
 
@@ -16,25 +18,26 @@ for(var i=0; i<textarea.length; i++){
         if(e.keyCode == 32)
             Analizador();
     }
+    
+    textarea[i].addEventListener("click",Analizador());
 }
 
 
 function Analizador(){
+    
     var Texto = document.activeElement.value;
     var Separado;
     var PalabraAnterior;
     var PalabraActual;
     var PalabraSiguiente;
 
-
-    //if(Texto.charAt(Texto.length-1) == " "){
     var patt = /\s+/
     Separado = Texto.split(patt);
-
-    /*if(Separado.length == 0){
+   
+    if(Texto.length == 0){
         PalabraActual = "$"; 
         Consulta(PalabraActual);
-    }*/
+    }
     
 
    if(Separado[Separado.length-3] == undefined){
@@ -50,7 +53,6 @@ function Analizador(){
         Insercion(PalabraAnterior,PalabraActual);
         Consulta(PalabraActual);
     }
-    //   }
 }
 
 
@@ -114,6 +116,9 @@ function Elegir(Datos){
 
 
 function Insercion(PalabraAnterior,PalabraSiguiente){
+    if(PalabraSiguiente.length == 0 || PalabraAnterior.length == 0)
+        return;
+    
     var Datos = {PAnterior: PalabraAnterior,
                  PSiguiente: PalabraSiguiente};
 
@@ -123,8 +128,7 @@ function Insercion(PalabraAnterior,PalabraSiguiente){
         type: 'POST',
         dataType: 'json',
         success: function(datos){
-            // alert(datos[0].PalabraSiguiente);
-        }
+          }
     });
 }
 
