@@ -9,7 +9,7 @@ for(var i=0; i<inputs.length; i++){
                 Analizador();
         }
         
-        inputs[i].addEventListener("click",Analizador());
+        inputs[i].addEventListener("click",Analizador);
     }
 }
 
@@ -19,13 +19,14 @@ for(var i=0; i<textarea.length; i++){
             Analizador();
     }
     
-    textarea[i].addEventListener("click",Analizador());
+    textarea[i].addEventListener("click",Analizador);
 }
 
 
 function Analizador(){
     
     var Texto = document.activeElement.value;
+    var tam = Texto.length;
     var Separado;
     var PalabraAnterior;
     var PalabraActual;
@@ -116,7 +117,7 @@ function Elegir(Datos){
 
 
 function Insercion(PalabraAnterior,PalabraSiguiente){
-    if(PalabraSiguiente.length == 0 || PalabraAnterior.length == 0)
+    if(PalabraSiguiente.length == 0 || PalabraAnterior.length ==0)
         return;
     
     var Datos = {PAnterior: PalabraAnterior,
@@ -128,7 +129,8 @@ function Insercion(PalabraAnterior,PalabraSiguiente){
         type: 'POST',
         dataType: 'json',
         success: function(datos){
-          }
+            // alert(datos[0].PalabraSiguiente);
+        }
     });
 }
 
