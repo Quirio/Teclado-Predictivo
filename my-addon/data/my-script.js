@@ -9,7 +9,7 @@ for(var i=0; i<inputs.length; i++){
                 Analizador();
         }
         
-        inputs[i].addEventListener("click",Analizador);
+        inputs[i].onclick = Analizador;
     }
 }
 
@@ -19,7 +19,7 @@ for(var i=0; i<textarea.length; i++){
             Analizador();
     }
     
-    textarea[i].addEventListener("click",Analizador);
+    textarea[i].onclick = Analizador;
 }
 
 
