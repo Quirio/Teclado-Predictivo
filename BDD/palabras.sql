@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 29-12-2014 a las 19:42:34
--- Versión del servidor: 5.6.21
--- Versión de PHP: 5.6.3
+-- Servidor: localhost
+-- Tiempo de generación: 19-01-2015 a las 12:52:26
+-- Versión del servidor: 5.6.20
+-- Versión de PHP: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -38,17 +38,24 @@ CREATE TABLE IF NOT EXISTS `palabras` (
 --
 
 INSERT INTO `palabras` (`PalabraAnterior`, `PalabraSiguiente`, `Coincidencia`, `Tiempo`) VALUES
-('a', 'hola', 1, '2014-12-29 18:40:11'),
-('antonio', 'benavente', 1, '2014-12-29 18:40:21'),
-('antonio', 'jooapeoa', 1, '2014-12-29 16:14:30'),
-('como', 'estás', 1, '2014-12-29 15:11:42'),
-('hola', 'antonio', 20, '2014-12-29 18:40:15'),
-('hola', 'hola', 5, '2014-12-29 16:21:19'),
-('hola', 'pollo', 3, '2014-12-29 16:04:42'),
-('hola', 'Suso', 5, '2014-12-29 16:02:11'),
-('me', 'voy', 1, '2014-12-29 18:40:05'),
-('que', 'tal?', 1, '2014-12-29 15:11:42'),
-('voy', 'a', 1, '2014-12-29 18:40:10');
+('$', 'buenas', 2, '2015-01-16 16:58:14'),
+('$', 'buenos', 1, '2015-01-16 16:58:04'),
+('$', 'en', 1, '2015-01-16 16:59:02'),
+('$', 'feliz', 2, '2015-01-16 16:58:36'),
+('$', 'hola', 19, '2015-01-16 17:40:49'),
+('$', 'mozilla', 1, '2015-01-16 17:03:56'),
+('buenas', 'noches', 2, '2015-01-16 16:58:20'),
+('buenas', 'tardes', 2, '2015-01-16 16:58:12'),
+('buenos', 'días', 2, '2015-01-16 16:58:07'),
+('en', 'casa', 2, '2015-01-16 16:59:05'),
+('está', 'usted', 1, '2015-01-16 17:41:06'),
+('feliz', 'cumpleaños', 2, '2015-01-16 16:58:35'),
+('feliz', 'navidad', 2, '2015-01-16 16:58:40'),
+('hola', 'que', 7, '2015-01-16 17:40:50'),
+('mozilla', 'firefox', 2, '2015-01-16 17:03:59'),
+('que', 'tal', 4, '2015-01-16 17:40:58'),
+('tal', 'está', 3, '2015-01-16 17:41:08'),
+('tal', 'estas', 3, '2015-01-16 17:40:40');
 
 --
 -- Índices para tablas volcadas
